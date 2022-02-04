@@ -1,10 +1,8 @@
-package university.crew;
+package interfaces;
 
 import university.asset.Lesson;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import university.crew.Student;
+import university.crew.Teacher;
 
 public interface IUniversity {
 
@@ -26,23 +24,48 @@ public interface IUniversity {
     public Lesson addLesson(String name, int classRoom, Teacher teacher);
 
     /**
-     *
+     * Create and add a new Full Time Teacher to the teachersList attribute
      * @param name
      * @param experienceYears
      * @param baseSalary
-     * @return
+     * @return The object just created
      */
     public Teacher addFullTimeTeacher(String name, int experienceYears, float baseSalary);
 
+    /**
+     * Create and add a new Part Time Teacher to the teachersList attribute
+     * @param name
+     * @param activeHoursPerWeek
+     * @param baseSalary
+     * @return The object just created
+     */
     public Teacher addPartTimeTeacher(String name, int activeHoursPerWeek, float baseSalary);
 
+    /**
+     * Return the object of lessonsList give by the index in the list
+     * @param index
+     * @return A Lesson object
+     */
     public Lesson getLessonByIndex(int index);
 
+    /**
+     * Return the object of studentsList give by the index in the list
+     * @param index
+     * @return A Student object
+     */
     public Student getStudentByIndex(int index);
 
+    /**
+     * Return the object of teachersList give by the index in the list
+     * @param index
+     * @return A Teacher object
+     */
     public Teacher getTeacherByIndex(int index);
 
-    public List<Student> getStudentsList();
-
+    /**
+     * Add the Student given as assistant of the Lesson given
+     * @param studentToFound
+     * @param lessonToFound
+     */
     public void addAssistantToLesson(Student studentToFound, Lesson lessonToFound);
 }

@@ -197,6 +197,9 @@ public class MainSystem{
         return university.getStudentByIndex(index-1);
     }
 
+    /**
+     * Shows classes after select one student
+     */
     private static void printClassesByStudent(){
         Student student = selectStudent();
         System.out.println("Lessons where "+student.getName()+" is assistant:");
@@ -207,6 +210,9 @@ public class MainSystem{
         System.out.println("\n\n");
     }
 
+    /**
+     * Create all instances needed for this exercise
+     */
     private static void initResources(){
         scan = new Scanner(System.in);
         university = new University();

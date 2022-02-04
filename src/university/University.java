@@ -1,5 +1,6 @@
 package university;
 
+import interfaces.IUniversity;
 import university.asset.Lesson;
 import university.crew.*;
 

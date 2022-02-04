@@ -1,4 +1,4 @@
-package university.crew;
+package interfaces;
 
 public interface ITeacher {
 

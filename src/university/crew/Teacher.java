@@ -1,6 +1,8 @@
 package university.crew;
 
-public class Teacher extends Person implements ITeacher{
+import interfaces.ITeacher;
+
+public class Teacher extends Person implements ITeacher {
     private float baseSalary;
 
     public Teacher(String name, float baseSalary) {
