@@ -1,5 +1,6 @@
 package main;
 
+import interfaces.IInteractive;
 import university.University;
 import university.asset.Lesson;
 import university.crew.Student;
@@ -7,13 +8,13 @@ import university.crew.Teacher;
 
 import java.util.*;
 
-public class MainSystem{
+public class Interactive implements IInteractive {
 
-    private static Scanner scan;
-    private static University university;
-    private static int option;
+    public Scanner scan;
+    public University university;
+    public int option;
 
-    public static void main(String[] args) {
+    public Interactive() {
         initResources();
         option = 1;
         while(option != 0){
@@ -39,7 +40,7 @@ public class MainSystem{
         }
     }
 
-    private static void printMenu(){
+    public void printMenu(){
         System.out.println("Menu -> select one of the following:\n" +
                 "1. Print all the professors with its data\n" +
                 "2. Print all lessons and select one of them (submenu)\n" +
@@ -49,7 +50,7 @@ public class MainSystem{
                 "0. Exit");
     }
 
-    private static void printSubMenuAndLessonData(){
+    public void printSubMenuAndLessonData(){
         int index = 1;
         System.out.println("Select one of the following list\n");
         for(Lesson oneLesson : university.getLessonsList()){
@@ -67,24 +68,24 @@ public class MainSystem{
 
     }
 
-    private static int scanInt(){
+    public int scanInt(){
         System.out.println("Integer input: ");
         int number = scan.nextInt();
         scan.nextLine();
         return number;
     }
 
-    private static String scanText(){
+    public String scanText(){
         System.out.println("Text input: ");
         return scan.nextLine();
     }
 
-    private static float scanFloat(){
+    public float scanFloat(){
         System.out.println("Float input: ");
         return scan.nextFloat();
     }
 
-    private static void printAllTeachersData(){
+    public void printAllTeachersData(){
         System.out.println("All teachers available data:\n");
         for(Teacher teacher:university.getTeachersList()){
             System.out.println(teacher.toString());
@@ -92,10 +93,10 @@ public class MainSystem{
         clearScreen();
     }
 
-    private static void clearScreen(){
+    public void clearScreen(){
         System.out.println("\n\n\n\n\n");
     }
-    private static void createNewStudent(){
+    public void createNewStudent(){
         System.out.println("Enter name");
         String name = scanText();
         System.out.println("Enter age");
@@ -114,7 +115,7 @@ public class MainSystem{
         System.out.println(student.toString()+"\n\n");
     }
 
-    private static void createNewLesson(){
+    public void createNewLesson(){
         System.out.println("Enter lesson name");
         String name = scanText();
         System.out.println("Enter classroom to assign");
@@ -129,7 +130,7 @@ public class MainSystem{
         System.out.println(lesson.toString());
     }
 
-    private static List<Student> selectAssistants(){
+    public List<Student> selectAssistants(){
 
         int index = 1;
         boolean addedMinimOne = false;
@@ -163,7 +164,7 @@ public class MainSystem{
         return assistants;
     }
 
-    private static Teacher selectTeacher(){
+    public Teacher selectTeacher(){
         System.out.println("Select teacher: ");
         int index = 0;
         for(Teacher teacher: university.getTeachersList()){
@@ -181,7 +182,7 @@ public class MainSystem{
 
     }
 
-    private static Student selectStudent(){
+    public Student selectStudent(){
         System.out.println("Select student: ");
         int index = 0;
         for(Student student: university.getStudentsList()){
@@ -197,10 +198,7 @@ public class MainSystem{
         return university.getStudentByIndex(index-1);
     }
 
-    /**
-     * Shows classes after select one student
-     */
-    private static void printClassesByStudent(){
+    public void printClassesByStudent(){
         Student student = selectStudent();
         System.out.println("Lessons where "+student.getName()+" is assistant:");
         List<Lesson> lessonsByStudent = university.getLessonsByStudent(student);
@@ -210,10 +208,7 @@ public class MainSystem{
         System.out.println("\n\n");
     }
 
-    /**
-     * Create all instances needed for this exercise
-     */
-    private static void initResources(){
+    public void initResources(){
         scan = new Scanner(System.in);
         university = new University();
 
