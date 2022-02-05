@@ -8,13 +8,13 @@ import university.crew.Teacher;
 
 import java.util.*;
 
-public class Interactive implements IInteractive {
+public class InteractiveConsole implements IInteractive {
 
     public Scanner scan;
     public University university;
     public int option;
 
-    public Interactive() {
+    public InteractiveConsole() {
         initResources();
         option = 1;
         while(option != 0){
@@ -101,7 +101,6 @@ public class Interactive implements IInteractive {
         String name = scanText();
         System.out.println("Enter age");
         int age = scanInt();
-//        Student student = new Student(name, Student.addAndGetCount(),age);
         Student student = university.addStudent(age, name);
         System.out.println("\nLesson to add");
         int index = 0;
